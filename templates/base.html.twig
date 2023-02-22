@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Accueil{% endblock %} - Site e-commerce Symfony 6</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Feuilles de styles -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css"
+/>
+    {# <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}"> #}
+    
+    {% block stylesheets %}{% endblock %}
+    <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
+
+    <!-- Fichiers JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
+    {# <script src="{{ asset('assets/js/bootstrap.bundle.min.js') }}" defer></script> #}
+    
+    {% block javascripts %}{% endblock %}
+    <script src="{{ asset('assets/js/script.js') }}" defer></script>
+</head>
+ 
+
+
+<body>
+
+
+    {% include "partials/navbar.html.twig" %}
+    {% include "partials/flash.html.twig" %}
+    {% if app.user and app.user.isVerified == false %}
+        <div class="alert">
+            <p class="p_alert"> vous n'avez pas activer votre compte cliquez sur ce <a href="{{path('app_reverify')}}"> <strong> lien</strong> </a></p>
+        </div>
+    {% endif %}
+    <section class="body">
+
+        {% block body %}
+        {% endblock %}
+        
+    </section>
+    {% include "partials/footer.html.twig" %}
+
+
+
+</body>
+
+</html>

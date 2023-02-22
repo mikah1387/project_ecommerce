@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}description du produit{% endblock %}
+
+{% block body %}
+
+<div class="product_parent">
+<div class="product">
+    
+    <h1>{{ product.name}}   </h1>
+     
+    <div class="images">
+
+      <div class="swiper mySwiper">
+        <div class="swiper-wrapper">
+      {% for image in product.images %}
+       
+          <div class="swiper-slide"><img src="{{asset('assets/uploads/products/min/300x300-') ~ image.name }}" 
+              alt="" srcset=""></div>
+      {% endfor %}
+          
+        </div>
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-pagination"></div>
+
+      </div>
+    
+        
+
+    </div>
+      
+     <h2>  Description </h2>
+    <p>{{ product.description}}</p>
+    <p> Categorie : <strong>{{product.categories.name}}</strong></p>
+    
+    <p> Prix : <strong>{{ product.prix}} €</strong></p>
+      
+     <div class="button_parent">
+        {% if product.stock > 0 %}
+         <a href="{{path('cart_add',{id:product.id})}}" class="button">Ajouter au panier</a>
+
+        {% else %}
+        <p style="color:red;"> il ne reste plus du stocks </p>
+        {% endif %}
+    
+     
+    </div>
+
+</div>
+</div>
+{% endblock %}

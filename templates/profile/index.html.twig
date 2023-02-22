@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mon profile{% endblock %}
+
+{% block body %}
+
+<div class="container_admin">
+  {# {% if app.user %} #}
+ 
+   {# {% set  id = app.user.id %} #}
+  {% include "partials/_profilnav.html.twig" %}
+
+  <main class="contenu_admin">
+      
+    <h1> <strong>Bonjour {{ app.user.firstname }} </strong>  </h1>
+    <h2> Bienvenu dans votre espace client</h2>
+
+    <p>Nom -> {{app.user.lastname}}</p>
+    <p>Prenom -> {{app.user.firstname}}</p>
+    <p>Adresse -> {{app.user.adresse}} 
+      <p> {{app.user.zipcode}} </p>
+      <p>  {{app.user.city}} </p>
+    </p>
+    <p>Prenom -> {{app.user.email}}</p>
+
+     
+  </main>
+  {# {% endif %} #}
+
+</div>
+
+{% endblock %}

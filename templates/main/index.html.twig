@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Acceuil{% endblock %}
+
+
+{% block body %}
+ <h1 > Bienvenu dans notre boutique </h1>
+
+ <ul>
+
+ {% for categorie in categories %}
+  {% if (categorie.parent == null) %}
+ <li> <h2>{{ categorie.name}} </h2></li>
+   {% else %}
+   <li> <a href="{{path('app_categories_list',{slug:categorie.slug})}}">{{ categorie.name}}</a>  </li>
+  {% endif %}
+
+    
+ {% endfor %}
+</ul>
+
+
+
+{% endblock %}

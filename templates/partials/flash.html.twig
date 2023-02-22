@@ -1,0 +1,13 @@
+{% for label,messages in app.flashes %}
+
+{% for message in messages %}
+
+<div class="alert {{label}}">
+
+    <p class="p_alert"> {{message|raw}}</p>
+
+</div>
+    
+{% endfor %}
+
+{% endfor %}

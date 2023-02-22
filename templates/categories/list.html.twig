@@ -1,0 +1,57 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ categorie.name}}{% endblock %}
+
+{% block body %}
+
+
+<div class="example-wrapper">
+
+    <h1>Nos {{ categorie.name}} </h1>
+
+   
+    {# {{ dump(products) }} #}
+
+    <div class="container_card">
+       
+
+        {% if products.data is empty  %}
+         <p> pas de stock !!</p>
+           {% else %} 
+         
+            {% for product in products.data %}
+             
+           <div class="card">
+            {% if product.images is not empty %}
+            <div  class="image_product">
+                <img src="{{asset('assets/uploads/products/min/300x300-') ~ product.images[0].name }}"  width="200" alt="">
+              </div>   
+            {% endif %}
+               <div class="header_card">
+                   <h3> {{product.name}}</h3>
+               </div>
+               <div class="body_card">
+                   <p> cat: {{product.categories.name}}</p>
+                   <p>{{ product.description}}</p>
+                   <p> Prix <strong>{{ product.prix}} </strong>€</p>
+               </div>
+   
+               <a href="{{path('app_products_details',{slug:product.slug})}}" class="button">Voir les detail</a>
+           </div>
+   
+           {% endfor %} 
+         {% endif %} 
+       
+      
+          
+    </div>
+
+    {% set path = 'app_categories_list' %}
+    {% set slug = categorie.slug %}
+    {% set pages = products.pages %}
+    {% set currentPage = products.page %}
+    {% include "partials/pagination.html.twig" %}
+
+</div>
+
+{% endblock %}

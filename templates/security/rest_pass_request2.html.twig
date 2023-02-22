@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Rénitialisation mdp{% endblock %}
+
+{% block body %}
+
+
+
+
+<h1 class="h3 mb-3 font-weight-normal">Entrez votre mot de passe </h1>
+{{ form_start(resetPasswordForm) }}
+
+{{ form_row(resetPasswordForm.password) }}
+
+<button type="submit" class="btn">Envoyer</button>
+
+
+{{ form_end(resetPasswordForm) }}
+
+
+
+{% endblock %}

@@ -1,0 +1,142 @@
+
+
+{% extends 'base.html.twig' %}
+
+{% block title %} gestion des produits {% endblock %}
+{% block stylesheets %}
+<link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}"> 
+{% endblock %}
+
+    
+{% block javascripts %}
+<script src="{{ asset('assets/js/bootstrap.bundle.min.js') }}" defer></script>
+{% endblock %}
+{% block body %}
+<div class="container_admin">
+
+    {% include "partials/_adminnav.html.twig" %}
+
+    <main class="contenu_admin">
+        <h1> Liste des produits</h1>
+         
+           <table>
+            <thead>
+
+                <tr>
+                    <th>ID</th>
+                    <th>Photo</th>   
+                    <th>Nom</th>
+                    <th>categorie</th>
+                    <th>Prix</th>                   
+                    <th>Stock</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for product in products %}
+                <tr>
+                    <td>{{product.id}}</td>
+                    {% if product.images is empty %}
+                    <td></td>
+                    {% else %}
+                    <td><img src="{{asset('assets/uploads/products/min/300x300-') ~ product.images[0].name }}" style="width:50%" alt=""></td> 
+                    {% endif %}                      
+                    <td>{{product.name}}</td>
+                    <td>{{product.categories.name}}</td>
+                    <td>{{product.prix}}</td>
+                    <td>{{product.stock}}</td>
+                    <td><a href="{{path('admin_products_update',{id:product.id})}}" class="button">Modifier</a>
+                    <a href="" type="button" class="button delete_product" data-bs-toggle="modal" data-bs-target="#exampleModal" data-id ="{{product.id}}" data-title="{{product.name}}"> supprimer</a>
+                    </td>
+                </tr>
+            
+                {% endfor %}  
+                
+
+            </tbody>
+           </table>
+           <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h1 class="modal-title fs-5" id="exampleModalLabel">supprimer un produit</h1>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                 <p></p> 
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+                  <a href="" class="button confdelete">Valider</a>
+                </div>
+              </div>
+            </div>
+          </div>
+         
+
+    </main>
+</div>
+
+
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{# {% extends 'base.html.twig' %}
+
+{% block title %} admin_products{% endblock %}
+
+{% block body %}
+
+
+<div class="example-wrapper">
+    <h1>Adminstaration des produits</h1>
+
+    <a href="{{path('admin_products_add')}}" class="button"> Ajouter un produit </a>
+
+    <div class="container_card">
+            
+        {% for product in products %}
+            
+        <div class="card">
+            {% if product.images is not empty %}
+            <div class="img">
+                <img src="{{asset('assets/uploads/products/min/300x300-') ~ product.images[0].name }}"  width="150" alt="">
+              </div>   
+            {% endif %}
+            
+            <div class="header_card">
+                <h3> {{product.name}}</h3>
+            </div>
+            <div class="body_card">
+                <p>
+                    {{ product.description}}
+                </p>
+                <p>
+                    {{ product.categories.name}}
+                </p>
+
+                <a href="{{path('admin_products_update',{id:product.id})}}" class="button">Modifier</a>
+                <a href="{{path('admin_products_delate',{id:product.id})}}" class="button"> Suprimer</a>
+            </div>
+
+
+        </div>
+        {% endfor %}
+    </div> 
+
+    {% endblock %} #}

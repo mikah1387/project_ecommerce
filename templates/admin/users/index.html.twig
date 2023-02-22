@@ -1,0 +1,68 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} administration users{% endblock %}
+
+{% block stylesheets %}
+<link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}"> 
+{% endblock %}
+
+    
+{% block javascripts %}
+<script src="{{ asset('assets/js/bootstrap.bundle.min.js') }}" defer></script>
+{% endblock %}
+
+{% block body %}
+
+
+<div class="container_admin">
+
+  {% include "partials/_adminnav.html.twig" %}
+
+  <main class="contenu_admin">
+      <h1> Liste des utilisateurs</h1>
+     
+<table>
+    <thead>
+        <tr>
+          <th scope="col">lastname</th>
+          <th scope="col">Firstname</th>
+          <th scope="col">Email</th>
+          <th scope="col">Adresse</th>
+          <th scope="col">Created_at</th>
+          <th scope="col">is_verified</th>
+          <th scope="col">Action</th>
+
+        </tr>
+      </thead>
+      <tbody>
+        {# {{ dump(users) }} #}
+    {% for user in users %}
+
+        <tr>
+
+          <th >{{user.lastname}}</th>
+          <td>{{user.firstname}}</td>
+          <td>{{user.email}}</td>
+          <td>{{user.adresse}}</td>
+          <td>{{user.createdat|date('Y-m-d H:i:s')}}</td>
+          <td>
+            <div class="form-check form-switch">
+              <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDisabled" disabled {{user.getIsVerified ? 'checked': ''}}>
+              <label class="form-check-label" for="flexSwitchCheckDisabled"></label>
+            </div>
+          </td>
+
+          <td>
+            <a href="#" class="button">Modifier</a>
+            <a href="#" class="button"> Suprimer</a>
+          </td>
+        </tr>
+    {% endfor %}
+        
+        </tbody>
+    </table>
+       
+      
+  </main>  
+</div>
+{% endblock %}

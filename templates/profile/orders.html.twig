@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mon profile{% endblock %}
+
+{% block body %}
+
+
+<div class="example-wrapper">
+    {% if app.user %}
+    <H1> Mes commandes</H1>
+ {% for order in orders %}
+
+<h3>Reference de la commande N°<strong> {{order.reference}}</strong> <span>Date d'achat {{order.createdAt|date("m/d/Y")}}</span></h3>
+
+    
+<table>
+    <thead>
+        <tr>
+            <th>nom de produit</th>
+            <th>quantités</th>
+            <th>prix</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% set total = 0 %}
+        {% set quantitys = 0 %}
+        {% for od in order.ordersDetails %}
+        <tr>
+            <td> {{od.products.name}}</td>
+            <td> {{od.quantity}}</td>
+            <td> {{od.prix * od.quantity}} €</td>
+        </tr>
+        {% set quantitys = quantitys + od.quantity  %}
+        {% set total = total + (od.prix * od.quantity) %}
+        {% endfor %}
+
+    </tbody>
+    <tfoot>
+        <tr>
+            <td>Total</td>
+            <td>{{quantitys}}</td>
+            <td>{{total}} €</td>
+        </tr>
+    </tfoot>
+</table>
+    
+
+ {% endfor %}
+    
+ 
+    {% endif %}
+
+</div>
+{% endblock %}

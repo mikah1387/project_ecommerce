@@ -1,0 +1,4 @@
+<h1> Bonjour {{user.lastname }} {{user.firstname}}</h1>
+
+<p> veuillez cliquer sur ce  <a href="{{absolute_url (path('app_verify',{token :token}))}}">{{absolute_url (path('app_verify',{token :token}))}}</a> pour activer votre compte</p>
+<p> Ce lien expire dans 3 heures </p>

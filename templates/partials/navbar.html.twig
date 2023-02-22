@@ -1,0 +1,48 @@
+<header>
+    <ul {% if is_granted('ROLE_ADMIN') %} style="background-color: rgb(210, 139, 139);" {% endif
+        %} >
+        <a href="{{path('app_main')}}">
+            <li> Accueil</li>
+            {# 'ROLE_ADMIN' in app.user.roles #}
+        </a>
+
+        <a href="{{path('app_products_index')}}">
+            <li>Produits</li>
+        </a>
+        {% if app.user %}
+        <a href="{{path('app_profile_index')}}">
+            <li>Mon compte</li>
+        </a>
+        <a href="{{path('app_logout')}} ">
+            <li>Déconnexion</li>
+        </a>
+
+
+        {% if is_granted('ROLE_ADMIN') %}
+            <a href="{{path('admin_index')}} ">
+            <li>Administration</li>
+            </a>
+            {# <a href="{{path('admin_products_index')}} ">
+            <li>Gestion_Produit</li>
+            </a>
+            <a href="{{path('admin_users_index')}} ">
+            <li>Gestion_Utilisateurs</li>
+            </a> #}
+        {% endif %}
+
+
+
+        {% else %}
+            <a href="{{path('app_register')}}">
+            <li>S'inscrire</li>
+            </a>
+            <a href="{{path('app_login')}} ">
+            <li>Connexion</li>
+            </a>
+            
+        {% endif %}
+        <a href="{{path('cart_index')}}" class="cart"> <img src="{{asset('assets/images_icones/icone_cart.png')}}" alt="" style="width:20px"></a>
+
+    </ul>
+
+</header>

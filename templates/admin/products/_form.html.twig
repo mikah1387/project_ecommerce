@@ -1,0 +1,33 @@
+
+
+{{ form_start(addproductform) }}
+
+{{ form_row(addproductform.name) }}
+{{ form_row(addproductform.description) }}
+{{ form_row(addproductform.prix) }}
+{{ form_row(addproductform.stock) }}
+
+{{ form_row(addproductform.categories) }}
+
+{% if app.request.attributes.get('_route')  == 'admin_products_update' %}
+ 
+<h2> les images de l'{{product.name}}</h2>
+   {% for image in product.images %}
+    <div>
+  <img src="{{asset('assets/uploads/products/min/300x300-' ~ image.name)}}" alt="" width="150" >
+  <a href="{{path('admin_products_delate_image',{id:image.id})}}" data-delate data-token=" 
+       {{csrf_token('delate' ~ image.id)}}"> Supprimer {{image.id}}</a>
+    </div>
+     
+   {% endfor %}
+{% endif %}
+{{ form_row(addproductform.images) }}
+
+<button type="submit" class="button">{{button_label|default('Ajouter')}}</button>
+{{ form_end(addproductform) }}
+    
+
+
+
+
+  

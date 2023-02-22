@@ -1,0 +1,85 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}  l'administration catégories{% endblock %}
+{% block stylesheets %}
+<link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}"> 
+{% endblock %}
+
+    
+{% block javascripts %}
+<script src="{{ asset('assets/js/bootstrap.bundle.min.js') }}" defer></script>
+{% endblock %}
+
+{% block body %}
+<div class="container_admin">
+
+    {% include "partials/_adminnav.html.twig" %}
+
+    <main class="contenu_admin">
+        <h1> Liste des categories</h1>
+         
+       
+           <table>
+            <thead>
+
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Nom</th>
+                    <th scope="col">Prant</th>
+                    <th scope="col">slug</th>
+                    <th scope="col">Ordre</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for categorie in categories %}
+                <tr>
+                    <td>{{categorie.id}}</td>
+                    <td>{{categorie.name}}</td>
+                    {% if categorie.parent is null  %}
+                    <th>{{null}} </th>   
+                    {% else %}   
+                    <td>{{categorie.parent.name}}</td>
+
+                    {% endif %}
+                    <td>{{categorie.slug}}</td>
+                    <td>{{categorie.categorieOrder}}</td>
+                    <td>
+                        <a href="{{path('admin_categories_update', {id:categorie.id})}}" class="button">Modifier</a>
+                        <a href="" type="button" class="button" data-bs-toggle="modal" data-bs-target="#exampleModal" data-id ="{{categorie.id}}" data-title="{{categorie.name}}">
+                            supprimer
+                        </a>
+                        
+                    </td>
+
+                </tr>
+            
+                {% endfor %}  
+                
+
+            </tbody>
+           </table>
+           
+           <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h1 class="modal-title fs-5" id="exampleModalLabel">supprimer une categorie</h1>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                 <p></p> 
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+                  <a href="" class="button confdelete">Valider</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+    </main>
+</div>
+
+
+{% endblock %}

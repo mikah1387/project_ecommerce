@@ -1,0 +1,315 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body{
+ --gold:rgb(186, 152, 64);
+ font-family: Arial, Helvetica, sans-serif;
+ background: rgb(225, 223, 223);
+
+}
+.body{
+
+    min-height: calc(100vh - 150px);
+
+}
+h1{
+
+   
+   width: 400px;
+   padding-bottom: 100px;
+   padding-top: 30px;
+   font-size: 30px;
+    margin: 0 auto;
+    color:var(--gold);
+}
+ul{
+  list-style: none;
+}
+header ul,footer ul{
+   position: relative;
+    height: 50px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--gold);
+    color: white;
+   
+
+}
+footer ul{
+    background-color: gold;
+
+
+}
+
+li{
+    padding: 15px;
+    font-style: none;
+}
+.cart{
+
+  position: absolute;
+     right: 200px;
+}
+form{
+
+    height: auto;
+    width: 500px;
+    padding: 50px 0;
+    margin: 0 auto;
+}
+label,input{
+    margin: 10px 0 ;
+    display: block;
+
+}
+input{
+    width: 100%;
+    height: 30px;
+    border-radius: 5px;
+    outline: none;
+    border: 1px solid var(--gold);
+}
+.button{
+    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+button,.button{
+
+    min-width: 130px;
+    max-width: 170px;
+    height: 40px;
+    background: var(--gold);
+    border-radius: 5px;
+    color: white;
+    font-weight: bold;
+    border: transparent;
+    margin: 0 20px;
+    margin: 10px auto;
+
+
+}
+button:hover,.button:hover{
+
+    opacity: 0.5;
+    color: black;
+    transition: 0.3s;
+}
+fieldset{
+    margin: 30px 0;
+    padding: 10px;
+    border: 1px dashed var(--gold2);
+}
+.alert{
+
+height: 60px;
+width: 98%;
+margin: 20px auto;
+border: 1px solid rgb(210, 106, 106);
+background: rgb(236, 176, 176);
+border-radius: 10px;
+color:rgb(112, 42, 42);
+display: flex;
+justify-content: center;
+align-items: center;
+
+}
+.success{
+    border:1px solid rgb(137 191 155);;
+background: rgb(175 219 181);
+color:rgb(72 96 82);
+
+}
+.container_card{
+ display: flex;
+ justify-content: space-around;
+ flex-wrap: wrap;
+ width: 100%;
+
+}
+.card{
+     
+
+    height: auto;
+    width: 200px;
+    
+    border-radius: 5px;
+    padding: 10px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+p{
+    text-align: justify;
+    padding: 10px 0;
+}
+.header_card{
+
+    padding: 20px 0;
+    background-color: rgb(183, 182, 182);
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.swiper {
+    width: 40%;
+    height: 30%;
+    margin-top: 70px;
+    margin-bottom: 70px;
+  }
+
+  .swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    background: #fff;
+
+    /* Center slide text vertically */
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+  }
+
+  .swiper-slide img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .product_parent{
+ 
+  display: flex;
+  justify-content: center;
+  align-items: center; 
+
+  }
+  .product{
+    height: 70%;
+    width:70% ;
+  }
+  p,h2{
+    text-align: center;
+  }
+
+  .button_parent{
+    width: 175px;
+    margin: 0 auto;
+  }
+
+  .active{
+
+    font-weight: bold;
+    color: green;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: rgb(223, 190, 109);
+    color: white;
+  }
+  a{
+    text-decoration: none;
+    color: black;
+    transition:all 0.3s;
+  }
+  a:hover{
+ color: white;
+ 
+  }
+  img{
+
+    width: 100%;
+    height: 100%;
+  }
+  
+ .pagination{
+  width: 300px;
+  max-width: 100%;
+  display: flex;
+  margin: 50px auto;
+
+
+ }
+  .image_product{
+
+    width: 100%;
+    height: 35%;
+    margin: 10px 0;
+  }
+  .example-wrapper{
+
+    width: 100%;
+    min-height: 100%;
+  }
+  .container_admin{
+
+    display: flex;
+    height: 100%;
+  }
+
+  .contenu_admin{
+    background-color: rgb(250, 250, 250); 
+    width: 100%;
+    
+
+  }
+  .aside_admin{
+    padding-top: 40px;
+    min-width: 20%;
+    background-color: rgb(226, 227, 227);
+  }
+  .card_art_head{
+
+    border: 1px solid rgb(214, 210, 210);
+    background-color: rgb(220, 217, 217);
+    padding: 10px 0;
+  }
+ 
+table{
+  border-collapse: collapse;
+  border: 1px solid goldenrod;
+  margin: 50px auto;
+}
+  th,td{
+    padding: 10px 20px;
+    
+  }
+  thead tr{
+    background-color:goldenrod;
+    
+
+  }
+  tbody tr{
+    
+
+    border-bottom: 1px solid goldenrod;
+  }
+  .quantiy_product{
+    position: fixed;
+    
+    top: 3px;
+    right: 185px;  
+    width: 20px;
+    height: 20px;
+    background:rgb(231 76 76 / 58%);
+    border-radius: 50%;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    font-weight: 600;
+  }

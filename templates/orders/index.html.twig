@@ -1,0 +1,56 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mes commandes{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+
+<div class="example-wrapper">
+ <H1> Mes commandes</H1>
+ {% for order in orders %}
+
+<h3>Reference de la commande N°<strong> {{order.reference}}</strong> <span>Date d'achat {{order.createdAt|date("m/d/Y")}}</span></h3>
+
+    
+<table>
+    <thead>
+        <tr>
+            <th>Image</th>
+            <th>nom de produit</th>
+            <th>quantités</th>
+            <th>prix</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% set total = 0 %}
+        {% set quantitys = 0 %}
+        {% for od in order.ordersDetails %}
+        <tr>
+            <td><img src="{{asset('assets/uploads/products/min/300x300-') ~ od.products.images[0].name }}" style="width:100px"  alt=""></td>
+            <td> {{od.products.name}}</td>
+            <td> {{od.quantity}}</td>
+            <td> {{od.prix * od.quantity}} €</td>
+        </tr>
+        {% set quantitys = quantitys + od.quantity  %}
+        {% set total = total + (od.prix * od.quantity) %}
+        {% endfor %}
+
+    </tbody>
+    <tfoot>
+        <tr>
+            <td colspan="2">Total</td>
+            <td>{{quantitys}}</td>
+            <td>{{total}} €</td>
+        </tr>
+    </tfoot>
+</table>
+    
+
+ {% endfor %}
+    
+ 
+</div>
+{% endblock %}

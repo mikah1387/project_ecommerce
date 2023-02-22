@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nos produits{% endblock %}
+
+{% block body %}
+
+
+<div class="example-wrapper">
+    <h1>NOS PRODUITS</h1>
+
+    <p> Nos produits s'affiche ici </p>
+
+    <h2>liste des produits </h2>
+    <ul>
+       {% for product in products %}
+       <li>
+    
+       <a href="{{path('app_products_details', {slug:product.slug})}}">  {{ product.name}}</a> 
+      
+
+       </li>
+        
+       {% endfor %}
+    </ul>
+    
+</div>
+{% endblock %}

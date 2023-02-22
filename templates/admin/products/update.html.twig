@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} admin_products_update{% endblock %}
+
+{% block body %}
+
+
+<div class="example-wrapper">
+    <h1>Modifier le produit</h1>
+
+    {% include "admin/products/_form.html.twig" with {'button_label':'Modifier'} %}
+
+
+    {% endblock %}
+    {% block javascripts %}
+
+    <script src="{{ asset('assets/js/image.js')}}" defer></script>
+    {% endblock %}

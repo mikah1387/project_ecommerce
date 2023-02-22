@@ -1,0 +1,65 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Votre panier{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+
+<div class="example-wrapper">
+   <h1>Votre panier </h1>
+    <div class="quantiy_product">
+        {{totalquantity}}
+    </div>
+ <table>
+    <thead>
+        <tr>
+            <th>Image</th>
+
+            <th>Nom</th>
+            <th>prix</th>
+            <th>quantités</th>
+            <th>total</th>
+            <th>action</th>
+        </tr>
+    </thead>
+    <tbody>
+     {% for element in dataproduct %}
+
+         <tr>
+            <td><img src="{{asset('assets/uploads/products/min/300x300-') ~ element.product.images[0].name }}" style="width:100px"  alt=""></td>
+            <td>{{element.product.name}}</td>
+            <td>{{element.product.prix}} €</td>
+            <td>{{element.quantity}}</td>
+            <td>{{element.product.prix * element.quantity}} €</td>
+            <td><a href="{{path('cart_add',{id:element.product.id})}}"><img src="{{asset('assets/images_icones/add.png')}}" style="width:25px" alt="icone_add_product"> </a>
+                <a href="{{path('cart_remove',{id:element.product.id})}}"> <img src="{{asset('assets/images_icones/remove.png')}}" style="width:25px" alt="icone_remove_product"></a>
+                <a href="{{path('cart_delete',{id:element.product.id})}}"><img src="{{asset('assets/images_icones/delete.png')}}" style="width:25px" alt="icone_remove_product"></a>
+            </td>
+         
+         </tr>
+      {% else %}
+             <tr>
+                 <th colspan="5" >Votre panier est vide</th>
+             </tr>
+       {% endfor %}
+      
+    </tbody>
+    <tfoot>
+        <tr >
+            <th colspan="3" >Total</th>
+            <th  >{{totalquantity}}</th>
+            <th>{{total}} €</th>
+            <th> <a href="{{path('cart_delete_All')}}"><img src="{{asset('assets/images_icones/delete.png')}}" style="width:25px" alt="icone_remove_product"></a></th>
+           </tr>
+    </tfoot>
+     
+
+ </table>
+    
+ <a class="button" href="{{path('cart_delevry')}}">Valider mon panier</a>
+   
+</div>
+{% endblock %}

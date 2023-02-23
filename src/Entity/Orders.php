@@ -23,7 +23,7 @@ class Orders
 
 
     #[ORM\ManyToOne(inversedBy: 'orders')]
-    private ?coupons $coupons = null;
+    private ?Coupons $coupons = null;
 
     #[ORM\ManyToOne(inversedBy: 'orders')]
     #[ORM\JoinColumn(nullable: false)]
